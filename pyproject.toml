@@ -1,0 +1,51 @@
+[project]
+name = "be-nicetomeetyou"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Benny Cheng",email = "benny_cheng@leadtek.com.tw"}
+]
+requires-python = ">=3.11"
+
+[tool.poetry]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<4.0"
+fastapi = {version = ">=0.115.11,<0.116.0", extras = ["standard"]}
+alembic = ">=1.15.1,<2.0.0"
+sqlalchemy = ">=2.0.38,<3.0.0"
+loguru = "^0.7.3"
+aiosqlite = "^0.21.0"
+beautifulsoup4 = "^4.13.3"
+requests = "^2.32.3"
+types-requests = "^2.32.0.20250306"
+jinja2 = "^3.1.6"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.9.10"
+pre-commit = "^4.1.0"
+mypy = "^1.15.0"
+
+[tool.ruff]  # https://docs.astral.sh/ruff/settings/#top-level
+line-length = 100
+exclude = ["**/migrations/"]
+
+[tool.ruff.lint]  # https://docs.astral.sh/ruff/settings/#lint
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "UP", # pyupgrade
+]
+ignore = [
+    "E402",  # module level import not at top of file
+]
+
+[tool.ruff.format]  # https://docs.astral.sh/ruff/settings/#format
+quote-style = "single"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nice-to-meet-you
+spec:
+  selector:
+    matchLabels:
+      app: nice-to-meet-you
+  template:
+    metadata:
+      labels:
+        app: nice-to-meet-you
+    spec:
+      containers:
+      - name: nice-to-meet-you
+        image: nice-to-meet-you
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8000
+      nodeSelector:
+        kubernetes.io/hostname: ubuntu
